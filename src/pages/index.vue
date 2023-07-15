@@ -16,7 +16,7 @@ const { t } = useI18n()
 
 <template>
   <div>
-    <img alt="Coventry Grove Builders Association Presents logo" src="/CGBAP_LOGO_CROPPED.png">
+    <img alt="Sonic Circle logo" src="/SONIC-CIRCLE-SHELL_logo.png">
     <p>
       <a rel="noreferrer" href="https://github.com/BBuchholz/magik-wel" target="_blank">
         MaGiK WeL
@@ -55,8 +55,8 @@ meta:
 
 <style>
 img {
-  height: 25%;
-  width: 25%;
+  max-width: 100%;
+  height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
