@@ -2,33 +2,33 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {
   /**
-   * Current name of the user.
+   * Current myrKi of the user.
    */
-  const savedName = ref('')
-  const previousNames = ref(new Set<string>())
+  const savedMyrKi = ref('')
+  const previousMyrKis = ref(new Set<string>())
 
-  const usedNames = computed(() => Array.from(previousNames.value))
-  const otherNames = computed(() => usedNames.value.filter(name => name !== savedName.value))
+  const usedMyrKis = computed(() => Array.from(previousMyrKis.value))
+  const otherMyrKis = computed(() => usedMyrKis.value.filter(anyMyrKi => anyMyrKi !== savedMyrKi.value))
 
   /**
-   * Changes the current name of the user and saves the one that was used
+   * Changes the current myrKi of the user and saves the one that was used
    * before.
    *
-   * @param name - new name to set
+   * @param anyMyrKi - new myrKi to set
    */
-  function setNewName(name: string) {
-    if (savedName.value)
-      previousNames.value.add(savedName.value)
+  function setNewMyrKi(anyMyrKi: string) {
+    if (savedMyrKi.value)
+      previousMyrKis.value.add(savedMyrKi.value)
 
-    savedName.value = name
+    savedMyrKi.value = anyMyrKi
   }
 
   return {
-    setNewName,
-    otherNames,
-    savedName,
+    setNewMyrKi,
+    otherMyrKis,
+    savedMyrKi,
   }
 })
 
 if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot))
+  import.meta.hot.accept(acceptHMRUpdate(useUserStore as any, import.meta.hot))
