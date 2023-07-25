@@ -22,7 +22,7 @@ repeatAt: never
 - [ ] record this into [[Music Maker Jam]] and export both the full beat and the vocal track alone so we have it for sonic circle
 
 
-
+```
 Inside each and every lion 
 theres a serpent 
 with a purpose 
@@ -34,6 +34,7 @@ all these things
 I seem to see C 
 But WANDER Y 
 WE cannot B... (continue this)
+```
 
 - these rants are more creative than my rhymes, lol, and I say that from a place of full self love of my rhyming games...
 
