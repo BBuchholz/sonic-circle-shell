@@ -1,7 +1,7 @@
 export function getNoteName(noteValue) {
   let name = 'NOTENAME'
 
-  let coaxedValue = noteValue
+  let coaxedValue = parseInt(noteValue)
 
   while (coaxedValue < 0)
     coaxedValue += 12
@@ -52,25 +52,35 @@ export function getNoteName(noteValue) {
 
   return name
 }
-export function getDiminishedChord(rootNote) {
-  return `${rootNote} Diminished`
-}
-export function getAugmentedChord(rootNote) {
-  return `${rootNote} Augmented`
-}
-export function getMajorChord(rootNote) {
-  const pattern = [0, 4, 7]
+
+function getChordFromPattern(patternName, pattern, rootNote) {
   const chord = []
 
   for (const patternStep of pattern)
     chord.push(getNoteName(patternStep + rootNote))
 
-  let output = `${getNoteName(rootNote)} Major -> `
+  let output = `${getNoteName(rootNote)} ${patternName} -> `
 
-  output += ''
-
+  output += chord.join(', ')
   return output
 }
+
+export function getDiminishedChord(rootNote) {
+  const pattern = [0, 3, 6]
+  return getChordFromPattern('Diminished', pattern, rootNote)
+}
+
+export function getAugmentedChord(rootNote) {
+  const pattern = [0, 4, 8]
+  return getChordFromPattern('Augmented', pattern, rootNote)
+}
+
+export function getMajorChord(rootNote) {
+  const pattern = [0, 4, 7]
+  return getChordFromPattern('Major', pattern, rootNote)
+}
+
 export function getMinorChord(rootNote) {
-  return `${rootNote} Minor`
+  const pattern = [0, 3, 7]
+  return getChordFromPattern('Minor', pattern, rootNote)
 }

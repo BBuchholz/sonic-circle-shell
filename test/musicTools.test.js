@@ -5,7 +5,10 @@ import {
 } from 'vitest'
 
 import {
+  getAugmentedChord,
+  getDiminishedChord,
   getMajorChord,
+  getMinorChord,
   getNoteName,
 } from '../src/pages/myrKiSs/musicTools'
 
@@ -26,6 +29,30 @@ test('gets note name for various notes', () => {
   expect(getNoteName(12)).toBe('C')
 })
 
-test('adds 1 + 2 to equal 3', () => {
+test('gets Major Chords from root note', () => {
   expect(getMajorChord(0)).toBe('C Major -> C, E, G')
+  expect(getMajorChord(2)).toBe('D Major -> D, F#/Gb, A')
+  expect(getMajorChord(12)).toBe('C Major -> C, E, G')
+  expect(getMajorChord(-1)).toBe('B Major -> B, D#/Eb, F#/Gb')
+})
+
+test('gets Minor Chords from root note', () => {
+  expect(getMinorChord(0)).toBe('C Minor -> C, D#/Eb, G')
+  expect(getMinorChord(2)).toBe('D Minor -> D, F, A')
+  expect(getMinorChord(12)).toBe('C Minor -> C, D#/Eb, G')
+  expect(getMinorChord(-1)).toBe('B Minor -> B, D, F#/Gb')
+})
+
+test('gets Augmented Chords from root note', () => {
+  expect(getAugmentedChord(0)).toBe('C Augmented -> C, E, G#/Ab')
+  expect(getAugmentedChord(2)).toBe('D Augmented -> D, F#/Gb, A#/Bb')
+  expect(getAugmentedChord(12)).toBe('C Augmented -> C, E, G#/Ab')
+  expect(getAugmentedChord(-1)).toBe('B Augmented -> B, D#/Eb, G')
+})
+
+test('gets Diminished Chords from root note', () => {
+  expect(getDiminishedChord(0)).toBe('C Diminished -> C, D#/Eb, F#/Gb')
+  expect(getDiminishedChord(2)).toBe('D Diminished -> D, F, G#/Ab')
+  expect(getDiminishedChord(12)).toBe('C Diminished -> C, D#/Eb, F#/Gb')
+  expect(getDiminishedChord(-1)).toBe('B Diminished -> B, D, F')
 })
