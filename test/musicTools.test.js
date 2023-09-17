@@ -8,6 +8,7 @@ import {
   getAugmentedChord,
   getDiminishedChord,
   getMajorChord,
+  getMajorChordAsObj,
   getMinorChord,
   getNoteName,
 } from '../src/pages/myrKiSs/musicTools'
@@ -56,4 +57,8 @@ test('gets Diminished Chords from root note', () => {
   expect(getDiminishedChord(12)).toBe('C Diminished -> C, D#/Eb, F#/Gb')
   expect(getDiminishedChord(-1)).toBe('B Diminished -> B, D, F')
   expect(getDiminishedChord(7)).toBe('G Diminished -> G, A#/Bb, C#/Db')
+})
+
+test('has both text and object return versions to get chords', () => {
+  expect(getMajorChordAsObj(0).pattern).toBe([0, 4, 7])
 })
