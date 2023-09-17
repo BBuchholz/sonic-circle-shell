@@ -57,7 +57,7 @@ function getChordFromPattern(patternName, pattern, rootNote) {
   const chord = []
 
   for (const patternStep of pattern)
-    chord.push(getNoteName(patternStep + rootNote))
+    chord.push(getNoteName(parseInt(patternStep) + parseInt(rootNote)))
 
   let output = `${getNoteName(rootNote)} ${patternName} -> `
 
