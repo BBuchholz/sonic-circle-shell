@@ -66,15 +66,23 @@ function getChordFromPattern(patternName, pattern, rootNote) {
 }
 
 function getChordFromPatternAsObj(patternName, pattern, rootNote) {
-  const chord = []
+  const chordPattern = []
 
   for (const patternStep of pattern)
-    chord.push(getNoteName(parseInt(patternStep) + parseInt(rootNote)))
+    chordPattern.push(parseInt(patternStep) + parseInt(rootNote))
 
-  let output = `${getNoteName(rootNote)} ${patternName} -> `
+  let asString = `${getNoteName(rootNote)} ${patternName} -> `
 
-  output += chord.join(', ')
-  return output
+  asString += chordPattern.join(', ')
+
+  const chord = {
+    pattern: chordPattern,
+    chordString: asString,
+    chordType: patternName,
+    chordRoot: rootNote,
+  }
+
+  return chord
 }
 
 export function getDiminishedChord(rootNote) {

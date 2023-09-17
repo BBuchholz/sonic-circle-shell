@@ -60,5 +60,7 @@ test('gets Diminished Chords from root note', () => {
 })
 
 test('has both text and object return versions to get chords', () => {
-  expect(getMajorChordAsObj(0).pattern).toBe([0, 4, 7])
+  expect(getMajorChordAsObj(0).pattern).toStrictEqual([0, 4, 7])
+  expect(getMajorChordAsObj(1).pattern).toStrictEqual([1, 5, 8])
+  expect(getMajorChordAsObj(12).pattern).toStrictEqual([12, 16, 19])
 })

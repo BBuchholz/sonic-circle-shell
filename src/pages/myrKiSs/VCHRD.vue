@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import {
-  getAugmentedChord,
-  getDiminishedChord,
-  getMajorChord,
-  getMinorChord,
+  getAugmentedChordAsObj,
+  getDiminishedChordAsObj,
+  getMajorChordAsObj,
+  getMinorChordAsObj,
 } from './musicTools'
+
+import KeyBoard from '~/components/KeyBoard.vue'
 
 const selectedRoot = ref('')
 const selectedChord = ref('')
@@ -18,21 +20,21 @@ function onSelectedChordChange(e) {
   selectedChord.value = e.target.value
 }
 
-const chordDef = computed(() => {
+const thisChord = computed(() => {
   let output = ''
 
   switch (selectedChord.value) {
     case 'maj':
-      output = getMajorChord(selectedRoot.value)
+      output = getMajorChordAsObj(selectedRoot.value)
       break
     case 'min':
-      output = getMinorChord(selectedRoot.value)
+      output = getMinorChordAsObj(selectedRoot.value)
       break
     case 'aug':
-      output = getAugmentedChord(selectedRoot.value)
+      output = getAugmentedChordAsObj(selectedRoot.value)
       break
     case 'dim':
-      output = getDiminishedChord(selectedRoot.value)
+      output = getDiminishedChordAsObj(selectedRoot.value)
       break
   }
 
@@ -108,9 +110,9 @@ const chordDef = computed(() => {
         Selected Chord: {{ selectedChord }}
       </p>
       <p class="display">
-        Chord Def: {{ chordDef }}
+        Chord Def: {{ thisChord.chordString }}
       </p>
-      <canvas id="keyCanvas" />
+      <KeyBoard chord-pattern="0 4 7" />
     </div>
     <p v-else-if="selectedRoot" class="display">
       Select a Chord Pattern
