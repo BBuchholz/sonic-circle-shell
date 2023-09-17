@@ -55,4 +55,5 @@ test('gets Diminished Chords from root note', () => {
   expect(getDiminishedChord(2)).toBe('D Diminished -> D, F, G#/Ab')
   expect(getDiminishedChord(12)).toBe('C Diminished -> C, D#/Eb, F#/Gb')
   expect(getDiminishedChord(-1)).toBe('B Diminished -> B, D, F')
+  expect(getDiminishedChord(7)).toBe('G Diminished -> G, A#/Bb, C#/Db')
 })
